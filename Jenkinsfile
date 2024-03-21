@@ -9,11 +9,11 @@ pipeline {
 		
 		environment {
 						
-						url = "https://github.com/hbpakhare/project.git"
-						dev-1ip = "10.10.1.84"
-						dev-2ip = "10.10.1.219"
-						qa-1ip  = "10.10.2.105"
-						qa-2ip  = "10.10.2.38"
+						(url = "https://github.com/hbpakhare/project.git")
+						(dev-1ip = "10.10.1.84")
+						(dev-2ip = "10.10.1.219")
+						(qa-1ip  = "10.10.2.105")
+						(qa-2ip  = "10.10.2.38")
 		
 		}
 		
