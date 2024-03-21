@@ -33,7 +33,7 @@ pipeline {
 				
 					steps {
 								sh "scp -r LoginWebApp.war hrishi@${qa1ip}:/mnt/wars"
-								sh "scp- r LoginWebApp.war hrishi@${qa2ip}:/mnt/wars"
+								sh "scp -r LoginWebApp.war hrishi@${qa2ip}:/mnt/wars"
 					}
 				
 				}
