@@ -1,53 +1,45 @@
 pipeline {
-		agent {
+
+	agent {
 				label {
-							label "built-in"
-							customWorkspace "/mnt/project"
+					
+						label "built-in"
+						customWorkspace "/mnt/wars"
 				
 				}
-		}
-		
-		environment {
+	}
+	
+	environment {
 						
-						url = "https://github.com/hbpakhare/project.git"
+						dev1ip = "10.10.1.84"
+						dev2ip = "10.10.1.219"
+						qa1ip  = "10.10.2.105"
+						qa2ip  = "10.10.2.38"
 		
 		}
-		
-		stages {
-		
-				stage ("ClONE_PROJECT"){
-								
-							steps {
-										sh "rm -rf *"
-										sh "git clone $url"
-							
-							}
+	
+	stages {
+	
+				stage ("COPY_DEV_WAR") {
+				
+					steps {
+								sh "scp -r LoginWebApp.war hrishi@${dev1ip}:/mnt/wars"
+								sh "scp -r LoginWebApp.war hrishi@${dev2ip}:/mnt/wars"
+					}
 				
 				}
 				
-				stage ("BUILD_PROJECT") {
-							
-								steps {
-											
-											sh "cd project && mvn clean install -DskipTests=true"
-								
-								}
+				stage ("COPY_QA_WAR") {
 				
-				}
-				
-				stage ("COPY") {
-							
-							steps {
-										sh "rm -rf /mnt/wars/*"
-										sh "cp -r project/target/LoginWebApp.war /mnt/wars"
-							
-							}
-				
+					steps {
+								sh "scp -r LoginWebApp.war hrishi@${qa1ip}:/mnt/wars"
+								sh "scp- r LoginWebApp.war hrishi@${qa2ip}:/mnt/wars"
+					}
 				
 				}
 		
 		
 		
-		}
+	}
 
 }
