@@ -11,10 +11,10 @@ pipeline {
 	
 	environment {
 						
-						dev-1ip = "10.10.1.84"
-						dev-2ip = "10.10.1.219"
-						qa-1ip  = "10.10.2.105"
-						qa-2ip  = "10.10.2.38"
+						dev1ip = "10.10.1.84"
+						dev2ip = "10.10.1.219"
+						qa1ip  = "10.10.2.105"
+						qa2ip  = "10.10.2.38"
 		
 		}
 	
@@ -23,8 +23,8 @@ pipeline {
 				stage ("COPY_DEV_WAR") {
 				
 					steps {
-								sh "scp -r LoginWebApp.war hrishi@${dev-1ip}:/mnt/wars"
-								sh "scp -r LoginWebApp.war hrishi@${dev-2ip}:/mnt/wars"
+								sh "scp -r LoginWebApp.war hrishi@${dev1ip}:/mnt/wars"
+								sh "scp -r LoginWebApp.war hrishi@${dev2ip}:/mnt/wars"
 					}
 				
 				}
@@ -32,8 +32,8 @@ pipeline {
 				stage ("COPY_QA_WAR") {
 				
 					steps {
-								sh "scp -r LoginWebApp.war hrishi@${qa-1ip}:/mnt/wars"
-								sh "scp- r LoginWebApp.war hrishi@${qa-2ip}:/mnt/wars"
+								sh "scp -r LoginWebApp.war hrishi@${qa1ip}:/mnt/wars"
+								sh "scp- r LoginWebApp.war hrishi@${qa2ip}:/mnt/wars"
 					}
 				
 				}
